@@ -1,0 +1,1144 @@
+<sxs>
+    <scene root="root" axis_length="0.001" />
+    <views default="player0_camera">
+        <perspective id="player0_camera" near="0.1" far="500" angle="75">
+            <from x="-0.9" y="0.7" z="0" />
+            <to x="0" y="0" z="0" />
+        </perspective>
+        <perspective id="player0_wide_camera" near="0.1" far="500" angle="85">
+            <from x="-2.0" y="2.0" z="0" />
+            <to x="0" y="0" z="0" />
+        </perspective>
+        <perspective id="player1_camera" near="0.1" far="500" angle="75">
+            <from x="0.9" y="0.7" z="0" />
+            <to x="0" y="0" z="0" />
+        </perspective>
+        <perspective id="player1_wide_camera" near="0.1" far="500" angle="85">
+            <from x="2.0" y="2.0" z="0" />
+            <to x="0" y="0" z="0" />
+        </perspective>
+    </views>
+
+    <ambient>
+        <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+        <background r="0.733" g="0.980" b="0.921" a="1.0" />
+    </ambient>
+
+    <lights>
+        <spot id="overhead_light" enabled="1" angle="2" exponent="256.0">
+            <location x="0" y="0" z="0" w="1.0" />
+            <target x="0" y="-1" z="0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0.2" g="0.2" b="0.2" a="1.0" />
+            <attenuation constant="0.0" linear="1.0" quadratic="0.0" />
+        </spot>
+        <omni id="global_light" enabled="1">
+            <location x="9.8" y="11.9" z="10" w="1.0" />
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="1.0" linear="0.0" quadratic="0.0" />
+        </omni>
+    </lights>
+
+    <textures>
+        <texture id="tex_wood_board" file="scenes/images/wood_board.jpg" />
+        <texture id="tex_warning" file="scenes/images/warning_message.png" />
+        <texture id="tex_menu_button" file="scenes/images/menu_button.png"/>
+        <texture id="tex_undo_button" file="scenes/images/undo_button.png"/>
+        <texture id="tex_movie_button" file="scenes/images/movie_button.png"/>
+        <texture id="tex_round_timer_label" file="scenes/images/round_timer.png"/>
+        <texture id="tex_game_timer_label" file="scenes/images/game_timer.png"/> 
+        <texture id="tex_score_label" file="scenes/images/score.png"/>
+        <texture id="tex_player0" file="scenes/images/player1.png"/>
+        <texture id="tex_player1" file="scenes/images/player2.png"/>
+        <texture id="tex_gameover" file="scenes/images/gameover.png"/>
+        <texture id="tex_wood" file="scenes/images/wood.jpg"/>
+    </textures>
+
+    <materials>
+        <material id="default_material" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.8" g="0.8" b="0.8" a="1.0" />
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="warning_material" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="0" g="0" b="0" a="0.0" />
+            <specular r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="green" shininess="100">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.1" g="0.2" b="0.1" a="1.0" />
+            <diffuse r="0.258" g="0.388" b="0.211" a="1.0" />
+            <specular r="0.7" g="0.8" b="0.7" a="1.0" />
+        </material>
+        <material id="bright_green" shininess="100">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.3" g="0.5" b="0.3" a="1.0" />
+            <diffuse r="0.458" g="0.688" b="0.511" a="1.0" />
+            <specular r="0.9" g="1.0" b="0.9" a="1.0" />
+        </material>
+        <material id="mid_green" shininess="10">
+            <emission r="0.1" g="0.1" b="0.1" a="1.0" />
+            <ambient r="0.45" g="0.7" b="0.3" a="1.0" />
+            <diffuse r="0.45" g="0.7" b="0.3" a="1.0" />
+            <specular r="0.45" g="0.7" b="0.3" a="1.0" />
+        </material>
+        <material id="light_green" shininess="10">
+            <emission r="0.1" g="0.1" b="0.1" a="1.0" />
+            <ambient r="0.588" g="0.858" b="0.490" a="1.0" />
+            <diffuse r="0.588" g="0.858" b="0.490" a="1.0" />
+            <specular r="0.588" g="0.858" b="0.490" a="1.0" />
+        </material>
+        <material id="headlight_yellow" shininess="10">
+            <emission r="0.949" g="0.878" b="0.600" a="1.0" />
+            <ambient r="0.949" g="0.878" b="0.600" a="1.0" />
+            <diffuse r="0.949" g="0.878" b="0.600" a="0.2" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+        <material id="red" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.4" g="0.0" b="0.0" a="1.0" />
+            <diffuse r="0.6" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.6" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="bright_red" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.6" g="0.0" b="0.0" a="1.0" />
+            <diffuse r="0.8" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.8" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="blue" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.0" g="0.0" b="0.4" a="1.0" />
+            <diffuse r="0.0" g="0.0" b="0.6" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.6" a="1.0" />
+        </material>
+        <material id="white" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="0.3" />
+            <ambient r="1.0" g="1.0" b="1.0" a="0.3" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="0.3" />
+            <specular r="0.0" g="0.0" b="0.0" a="0.3" />
+        </material>
+        <material id="black" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="0.3" />
+            <ambient r="0.2" g="0.2" b="0.2" a="0.3" />
+            <diffuse r="0.25" g="0.25" b="0.25" a="0.3" />
+            <specular r="0.0" g="0.0" b="0.0" a="0.3" />
+        </material>
+        <material id="emissive_white" shininess="10">
+            <emission r="1.0" g="1.0" b="1.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="pure_white" shininess="10">
+            <emission r="1.0" g="1.0" b="1.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="0.0" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="pure_black" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="0.3" />
+            <ambient r="0.0" g="0.0" b="0.0" a="0.3" />
+            <diffuse r="0.1" g="0.1" b="0.1" a="0.3" />
+            <specular r="0.0" g="0.0" b="0.0" a="0.3" />
+        </material>
+        <material id="dark_gray" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+        <material id="medium_gray" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0" />
+            <diffuse r="0.4" g="0.4" b="0.4" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+    </materials>
+
+    <transformations>
+        <!-- Reusable transformations -->
+        <transformation id="tr_rotateX90">
+            <rotate axis="x" angle="90" />
+        </transformation>
+        <transformation id="tr_rotateY90">
+            <rotate axis="y" angle="90" />
+        </transformation>
+        <transformation id="tr_rotateY180">
+            <rotate axis="y" angle="180" />
+        </transformation>
+        <transformation id="tr_rotateZ180">
+            <rotate axis="z" angle="180" />
+        </transformation>
+
+        <!-- Unique transformations -->
+        <transformation id="tr_street_building0">
+            <translate x="-10" y="15" z="5" />
+            <scale x="10" y="30" z="10" />
+        </transformation>
+        <transformation id="tr_street_building1_body">
+            <scale x="10" y="15" z="8" />
+        </transformation>
+        <transformation id="tr_street_ground_floor">
+            <scale x="40" y="0.5" z="60" />
+        </transformation>
+        <transformation id="tr_street_road">
+            <translate x="0" y="0.3" z="0" />
+        </transformation>
+        <transformation id="tr_street_road_floor">
+            <scale x="6.2" y="0.1" z="60" />
+            <rotate axis="x" angle="-90" />
+        </transformation>
+        <transformation id="tr_street_road_line">
+            <translate x="0" y="0.01" z="0" />
+            <scale x=".15" y="0.1" z="60" />
+        </transformation>
+        <transformation id="tr_street_ground_walkway_left">
+            <translate x="-3.8" y="0.4" z="0" />
+            <scale x="1.6" y="0.3" z="60" />
+        </transformation>
+        <transformation id="tr_street_ground_walkway_right">
+            <translate x="3.9" y="0.4" z="0" />
+            <scale x="1.8" y="0.3" z="60" />
+        </transformation>
+        <transformation id="tr_street_ground_sign">
+            <translate x="3.5" y="3" z="-28" />
+        </transformation>
+        <transformation id="tr_street_ground_sign_top_inner">
+            <translate x="0" y="0.025" z="0.001" />
+            <scale x="0.8" y="0.8" z="1" />
+        </transformation>
+        <transformation id="tr_street_ground_sign_cylinder">
+            <translate x="0" y="-3" z="-0.05" />
+            <rotate axis="x" angle="-90" />
+            <scale x="0.05" y="0.05" z="3.5" />
+        </transformation>
+        <transformation id="tr_car">
+            <translate x="-1.5" y="1.18" z="-2.5" />
+        </transformation>
+        <transformation id="tr_car_front_window">
+            <translate x="-0.8" y="0.3" z="0.9" />
+            <scale x="1.6" y="1.0" z="1" />
+            <rotate axis="x" angle="-21.5" />
+        </transformation>
+        <transformation id="tr_car_back_window">
+            <translate x="0" y="0.8" z="-1.45" />
+            <scale x="1.6" y="0.8" z="1" />
+            <rotate axis="x" angle="12.5" />
+            <rotate axis="y" angle="180" />
+            <translate x="-0.5" y="-0.5" z="0" />
+        </transformation>
+        <transformation id="tr_flipX">
+            <scale x="-1" y="1" z="1" />
+        </transformation>
+        <transformation id="tr_car_lateral_left">
+            <scale x="1" y="0.8" z="1" />
+            <translate x="0.9" y="0.9" z="0" />
+        </transformation>
+        <transformation id="tr_car_lateral_right">
+            <scale x="1" y="0.8" z="1" />
+            <translate x="-0.795" y="0.9" z="0" />
+        </transformation>
+        <transformation id="tr_car_lateral_window">
+            <translate x="-0.05" y="-0.45" z="0.7" />
+            <rotate axis="y" angle="90" />
+        </transformation>
+        <transformation id="tr_car_front_headlights">
+            <translate x="0" y="0.15" z="1.9" />
+        </transformation>
+        <transformation id="tr_car_front_headlight_left">
+            <scale x="0.2" y="0.2" z="0.1" />
+            <translate x="3.0" y="0" z="0" />
+        </transformation>
+        <transformation id="tr_car_lateral_windows_right">
+            <translate x="-0.1" y="0" z="-0.79" />
+            <scale x="1" y="1" z="1.03" />
+            <rotate axis="y" angle="180" />
+        </transformation>
+        <transformation id="tr_car_lateral_pillar_front">
+            <translate x="-0.051" y="0.1" z="0.68" />
+            <rotate axis="x" angle="-18" />
+            <scale x="0.1" y="1.15" z="0.1" />
+        </transformation>
+        <transformation id="tr_car_lateral_pillar_center">
+            <translate x="-0.051" y="0.1" z="-0.5" />
+            <scale x="0.1" y="1" z="0.2" />
+        </transformation>
+        <transformation id="tr_car_lateral_pillar_back">
+            <translate x="-0.051" y="0.1" z="-1.435" />
+            <rotate axis="x" angle="13" />
+            <scale x="0.1" y="1.15" z="0.1" />
+        </transformation>
+        <transformation id="tr_car_bottom_body">
+            <scale x="1.8" y="0.9" z="3.8" />
+        </transformation>
+        <transformation id="tr_car_bottom_wheels">
+            <translate x="0" y="-0.4" z="-1.2" />
+        </transformation>
+        <transformation id="tr_forward_wheel_set">
+            <translate x="0" y="0" z="2.1" />
+        </transformation>
+        <transformation id="tr_wheel_tire">
+            <scale x="0.35" y="0.45" z="0.45" />
+            <rotate axis="y" angle="90" />
+        </transformation>
+        <transformation id="tr_wheel_inner_base">
+            <translate x="0" y="0" z="0" />
+            <scale x="0.01" y="0.45" z="0.45" />
+            <rotate axis="y" angle="-90" />
+        </transformation>
+        <transformation id="tr_p_face_zp">
+            <translate x="-0.5" z="0.5" y="-0.5" />
+        </transformation>
+        <transformation id="tr_p_upside_down_triangle">
+            <rotate axis="z" angle="180" />
+            <translate x="-0.5" y="-0.433" z="0" />
+        </transformation>
+        <transformation id="tr_street_building0_helipad_circle">
+            <translate x="-10" y="30.0" z="5" />
+            <scale x="8.0" y="8" z="8.0" />
+            <rotate axis="x" angle="90" />
+        </transformation>
+    </transformations>
+
+    <primitives>
+        <primitive id="rectangle">
+            <rectangle x1="0" y1="0" x2="1" y2="1" />
+        </primitive>
+        <primitive id="triangle">
+            <triangle x1="0" y1="0" z1="0" x2="1" y2="0" z2="0" x3="0.5" y3="0.866" z3="0" />
+        </primitive>
+        <primitive id="cylinder">
+            <cylinder base="1.0" top="1.0" height="1.0" slices="16" stacks="16" />
+        </primitive>
+        <primitive id="cone">
+            <cylinder base="1.0" top="0.0" height="1.0" slices="16" stacks="16" />
+        </primitive>
+        <primitive id="sphere">
+            <sphere radius="1.0" slices="16" stacks="16" />
+        </primitive>
+        <primitive id="torus">
+            <torus inner="0.05" outer="0.5" slices="8" loops="64" />
+        </primitive>
+        <primitive id="donut">
+            <torus inner="0.4" outer="1.0" slices="16" loops="64" />
+        </primitive>
+        <primitive id="board_patch">
+            <patch degree_u="1" degree_v="1" parts_u="32" parts_v="32">
+                <controlpoint x="-0.5" y="0.5" z="0.0" />
+                <controlpoint x="0.5" y="0.5" z="0.0" />
+                <controlpoint x="-0.5" y="-0.5" z="0.0" />
+                <controlpoint x="0.5" y="-0.5" z="0.0" />
+            </patch>
+        </primitive>
+        <primitive id="round_timer">
+            <counter />
+        </primitive>
+        <primitive id="game_timer">
+            <counter />
+        </primitive>
+        <primitive id="game_score">
+            <counter />
+        </primitive>
+    </primitives>
+    <animations>
+    </animations>
+    <components>
+        <component id="root">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="default_material" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="main" />
+            </children>
+        </component>
+
+        <component id="main">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="default_material" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="floor"/>
+                <componentref id="ceiling"/>
+                <componentref id="wall0"/>
+                <componentref id="wall1"/>
+                <componentref id="wall2"/>
+                <componentref id="wall3"/>
+                <componentref id="board_table_set" />
+            </children>
+        </component>
+
+        <component id="board_table_set">
+            <transformation>
+                <translate x="0" y="0" z="0"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+                <componentref id="game_info_board" />
+                <componentref id="auxiliary_board0"/>
+                <componentref id="auxiliary_board1"/>
+                <componentref id="board_edge_down"/>
+                <componentref id="board_edge_up"/>
+                <componentref id="board_fill"/>
+            </children>
+        </component>
+
+        <component id="board_fill">
+            <transformation>
+                <scale x="1.5" y="0.05" z="1.49"/>
+            </transformation>
+            <materials>
+                <material id="dark_gray"/>
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="p_cube"/>
+            </children>
+        </component>
+
+        <component id="board_edge_down">
+            <transformation>
+                <translate x="-0.74" y="-0.01" z="0" />
+                <scale x="0.1" y="0.2" z="1.4"/>
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="tex_wood" length_s="1.0" length_t="1.0"/>
+            <children>
+                <componentref id="p_cube"/>
+            </children>
+        </component>
+
+        <component id="board_edge_up">
+            <transformation>
+                <translate x="0.74" y="-0.01" z="0" />
+                <scale x="0.1" y="0.2" z="1.4"/>
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="tex_wood" length_s="1.0" length_t="1.0"/>
+            <children>
+                <componentref id="p_cube"/>
+            </children>
+        </component>
+
+        <component id="auxiliary_board0">
+            <transformation>
+                <translate x="0" y="0" z="0.68" />
+                <scale x="1.6" y="0.2" z="0.14"/>
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="tex_wood" length_s="1.0" length_t="1.0"/>
+            <children>
+                <componentref id="p_cube"/>
+            </children>
+        </component>
+
+        <component id="auxiliary_board1">
+            <transformation>
+                <translate x="0" y="0" z="-0.68" />
+                <scale x="1.6" y="0.2" z="0.14"/>
+            </transformation>
+            <materials>
+                <material id="inherit"/>
+            </materials>
+            <texture id="tex_wood" length_s="1.0" length_t="1.0"/>
+            <children>
+                <componentref id="p_cube"/>
+            </children>
+        </component>
+
+        <component id="game_info_board">
+            <transformation>
+                <translate x="0" y="0.3" z="-2"/>
+                <scale x="2" y="2" z="1"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="game_info_board_body" />
+                <componentref id="return_to_menu_button" />
+                <componentref id="undo_button" />
+                <componentref id="movie_button" />
+                <componentref id="round_timer" />
+                <componentref id="game_timer" />
+                <componentref id="game_score" />
+                <componentref id="current_player" />
+                <componentref id="round_timer_label" />
+                <componentref id="game_timer_label" />
+                <componentref id="score_label"/>
+                <componentref id="gameover_message" />
+                <componentref id="prev_camera_button"/>
+                <componentref id="next_camera_button"/>
+            </children>
+        </component>
+
+        <component id="game_info_board_body">
+            <transformation>
+                <scale x="0.55" y="0.4" z="0.1" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_wood" length_s="1.0" length_t="1.0" />
+            <children>
+                <componentref id="p_cube" />
+            </children>
+        </component>
+
+        <component id="current_player">
+            <transformation>
+                <translate x="-0.265" y="0.15" z="0.051"/>
+                <scale x="0.25" y="0.05" z="1"/> 
+            </transformation>
+            <materials>
+                <material id="pure_white"/>
+            </materials>
+            <texture id="tex_player0" length_s="1.0" length_t="1.0"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="gameover_message">
+            <transformation>
+                <translate x="-0.265" y="0.1" z="0.051"/>
+                <scale x="0.25" y="0.05" z="1"/> 
+            </transformation>
+            <materials>
+                <material id="pure_white"/>
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="round_timer_label">
+            <transformation>
+                <translate x="0.015" y="0.03" z="0.051"/>
+                <scale x="0.25" y="0.05" z="1"/> 
+            </transformation>
+            <materials>
+                <material id="white"/>
+            </materials>
+            <texture id="tex_round_timer_label" length_s="1.0" length_t="1.0"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="score_label">
+            <transformation>
+                <translate x="-0.265" y="0.03" z="0.051"/>
+                <scale x="0.25" y="0.05" z="1"/> 
+            </transformation>
+            <materials>
+                <material id="white"/>
+            </materials>
+            <texture id="tex_score_label" length_s="1.0" length_t="1.0"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        
+
+        <component id="round_timer">
+            <transformation>
+                <translate x="0.14" y="0" z="0.051"/>
+                <scale x="0.05" y="0.05" z="1"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="round_timer" />
+            </children>
+        </component>
+
+        <component id="game_timer_label">
+            <transformation>
+                <translate x="0.015" y="0.15" z="0.051"/>
+                <scale x="0.25" y="0.05" z="1"/> 
+            </transformation>
+            <materials>
+                <material id="white"/>
+            </materials>
+            <texture id="tex_game_timer_label" length_s="1.0" length_t="1.0"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="game_timer">
+            <transformation>
+                <translate x="0.14" y="0.12" z="0.051"/>
+                <scale x="0.05" y="0.05" z="1"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="game_timer"/>
+            </children>
+        </component>       
+
+        <component id="game_score">
+            <transformation>
+                <translate x="-0.14" y="0" z="0.051"/>
+                <scale x="0.05" y="0.05" z="1"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="game_score"/>
+            </children>
+        </component>
+
+        <component id="return_to_menu_button">
+            <transformation>
+                <scale x="0.1328" y="0.08" z="0.1" />
+                <translate x="1.4" y="-1.4" z="0.03" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="tex_menu_button" length_t="1.0" length_s="1.0" />
+            <children>
+                <componentref id="p_cube" />
+            </children>
+            <picking id="100"/>
+        </component>
+
+        <component id="undo_button">
+            <transformation>
+                <scale x="0.1328" y="0.08" z="0.1" />
+                <translate x="0.0" y="-1.4" z="0.03" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="tex_undo_button" length_t="1.0" length_s="1.0" />
+            <children>
+                <componentref id="p_cube" />
+            </children>
+            <picking id="101"/>
+        </component>
+
+        <component id="movie_button">
+            <transformation>
+                <scale x="0.1328" y="0.08" z="0.1" />
+                <translate x="-1.4" y="-1.4" z="0.03" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="tex_movie_button" length_t="1.0" length_s="1.0" />
+            <children>
+                <componentref id="p_cube" />
+            </children>
+            <picking id="102"/>
+        </component>
+
+        <component id="prev_camera_button">
+            <transformation>
+                <scale x="0.04" y="0.04" z="0.04" />
+                <translate x="-5" y="5" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="p_cube" />
+            </children>
+            <picking id="105"/>
+        </component>
+
+        <component id="next_camera_button">
+            <transformation>
+                <scale x="0.04" y="0.04" z="0.04" />
+                <translate x="5" y="5" z="0" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="p_cube" />
+            </children>
+            <picking id="106"/>
+        </component>
+
+        <component id="warning_message">
+            <transformation>
+                <translate x="20" y="20" z="-50"/>
+                <scale x="80" y="40" z="1"/>
+            </transformation>
+            <materials>
+                <material id="warning_material"/>
+            </materials>
+            <texture id="tex_warning" length_s="1.0" length_t="1.0"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+            <picking id="103"/>
+        </component>
+
+        <component id="board">
+            <transformation>
+                <scale x="1.0" y="0.2" z="1.0" />
+            </transformation>
+            <materials>
+                <material id="default_material" />
+            </materials>
+            <texture id="tex_wood" length_t="1.0" length_s="1.0"/>
+            <children>
+                <componentref id="p_cube" />
+                <componentref id="board_top" />
+            </children>
+        </component>
+
+        <component id="board_top">
+            <transformation>
+                <translate x="0" y="0.501" z="0"/>
+                <rotate axis="x" angle="-90"/>
+            </transformation>
+            <materials>
+                <material id="default_material" />
+            </materials>
+            <texture id="tex_wood_board" length_s="1.0" length_t="1.0" />
+            <children>
+                <primitiveref id="board_patch"/>
+            </children>
+        </component>
+
+        <component id="boardset">
+            <transformation>
+                <rotate axis="y" angle="90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="board" />
+            </children>
+        </component>
+
+        <component id="piece0">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="black" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="selected_piece0">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="medium_gray" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="kingpiece0">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="pure_black" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="selected_kingpiece0">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="medium_gray" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="piece1">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="selected_piece1">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="medium_gray" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="kingpiece1">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="emissive_white" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="selected_kingpiece1">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="medium_gray" />
+            </materials>
+            <texture id="none" />
+            <children>
+                <componentref id="cylinder_component"/>
+            </children>
+        </component>
+
+        <component id="cylinder_component">
+            <transformation>
+                <translate x="0" y="0.02" z="0"/>
+                <scale x="0.05" y="0.05" z="0.05"/>
+                <rotate axis="z" angle="-90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="cylinder_side" />
+                <componentref id="cylinder_base0" />
+                <componentref id="cylinder_base1" />
+            </children>
+        </component>
+
+        <component id="cylinder_side">
+            <transformation>
+                <transformationref id="tr_wheel_tire" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cylinder" />
+            </children>
+        </component>
+
+        <component id="cylinder_base0">
+            <transformation>
+                <translate x="0.35" y="0" z="0" />
+                <scale x="0.05" y="0.45" z="0.45" />
+                <rotate axis="y" angle="90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cone" />
+            </children>
+        </component>
+
+        <component id="cylinder_base1">
+            <transformation>
+                <transformationref id="tr_wheel_inner_base" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="cone" />
+            </children>
+        </component>
+
+        
+        <component id="floor">
+            <transformation>
+                <translate x="0" y="-6" z="0"/>
+                <scale x="10" y="10" z="10"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+            </children>
+        </component>
+
+        <component id="ceiling">
+            <transformation>
+                <translate x="0" y="6" z="0"/>
+                <scale x="10" y="10" z="10"/>
+                <rotate axis="x" angle="180"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+            </children>
+        </component>
+
+        <component id="wall0">
+            <transformation>
+                <translate x="0" y="0" z="-6"/>
+                <scale x="10" y="10" z="10"/>
+                <rotate axis="x" angle="90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+            </children>
+        </component>
+
+        <component id="wall1">
+            <transformation>
+                <translate x="0" y="0" z="6"/>
+                <scale x="10" y="10" z="10"/>
+                <rotate axis="x" angle="-90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+            </children>
+        </component>
+
+        <component id="wall2">
+            <transformation>
+                <translate x="-6" y="0" z="0"/>
+                <scale x="10" y="10" z="10"/>
+                <rotate axis="z" angle="-90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+            </children>
+        </component>
+
+        <component id="wall3">
+            <transformation>
+                <translate x="6" y="0" z="0"/>
+                <scale x="10" y="10" z="10"/>
+                <rotate axis="z" angle="90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="boardset"/>
+            </children>
+        </component>
+
+        <!-- Primitive Components -->
+        <component id="p_cube">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_two_faces_along_y" />
+                <componentref id="p_cube_without_bases" />
+            </children>
+        </component>
+
+        <component id="p_cube_without_top">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_cube_without_bases" />
+                <componentref id="p_face_y-" />
+            </children>
+        </component>
+
+        <component id="p_cube_without_base">
+            <transformation>
+                <transformationref id="tr_rotateZ180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_cube_without_top" />
+            </children>
+        </component>
+
+        <component id="p_cube_without_bases">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_two_faces_along_z" />
+                <componentref id="p_two_faces_along_x" />
+            </children>
+        </component>
+
+        <component id="p_two_faces_along_y">
+            <transformation>
+                <transformationref id="tr_rotateX90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_two_faces_along_z" />
+            </children>
+        </component>
+
+        <component id="p_two_faces_along_x">
+            <transformation>
+                <transformationref id="tr_rotateY90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_two_faces_along_z" />
+            </children>
+        </component>
+
+        <component id="p_two_faces_along_z">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_face_zp" />
+                <componentref id="p_face_zn" />
+            </children>
+        </component>
+
+        <component id="p_face_y-">
+            <transformation>
+                <transformationref id="tr_rotateX90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_face_zp" />
+            </children>
+        </component>
+
+        <component id="p_face_zp">
+            <transformation>
+                <transformationref id="tr_p_face_zp" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="rectangle" />
+            </children>
+        </component>
+
+        <component id="p_face_zn">
+            <transformation>
+                <transformationref id="tr_rotateY180" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <componentref id="p_face_zp" />
+            </children>
+        </component>
+
+        <component id="p_upside_down_triangle">
+            <transformation>
+                <transformationref id="tr_p_upside_down_triangle" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit" />
+            <children>
+                <primitiveref id="triangle" />
+            </children>
+        </component>
+    </components>
+</sxs>

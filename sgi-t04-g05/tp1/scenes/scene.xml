@@ -1,0 +1,1222 @@
+<sxs>
+    <scene root="root" axis_length="0.001"/>
+    <views default="default_camera">
+        <perspective id="default_camera" near="0.1" far="500" angle="45">
+            <from x="15" y="15" z="25" />
+            <to x="0" y="-2" z="0" />
+        </perspective>
+        <ortho id="ortho_camera" near="0.1" far="500" left="-30" right="30" top="30" bottom="-30">
+            <from x="25" y="40" z="25" />
+            <to x="0" y="0" z="0" />
+        </ortho>
+    </views>
+
+    <ambient>
+        <ambient r="0.1" g="0.1" b="0.1" a="1.0" />
+        <background r="0.733" g="0.980" b="0.921" a="1.0" />
+    </ambient>
+
+    <lights>
+        <omni id="global_light" enabled="1">
+            <location x="9.8" y="11.9" z="10" w="1.0" />
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="1.0" linear="0.0" quadratic="0.0" />
+        </omni>
+
+        <spot id="headlight_right" enabled="0" angle="45" exponent="16">
+            <location x="-2.1" y="1.4" z="-0.5" w="1.0" />
+            <target x="-2.1" y="1.0" z="5" />
+            <ambient r="0.0" g="0.0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="0.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="0.0" a="1.0" />
+            <attenuation constant="1.0" linear="0.0" quadratic="0.0" />
+        </spot>
+        <spot id="headlight_left" enabled="0" angle="45" exponent="16">
+            <location x="-0.9" y="1.4" z="-0.5" w="1.0" />
+            <target x="-0.9" y="1.0" z="5" />
+            <ambient r="0.0" g="0.0" b="0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="0.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="0.0" a="1.0" />
+            <attenuation constant="1.0" linear="0.0" quadratic="0.0" />
+        </spot>
+        <spot id="overhead_light" enabled="1" angle="90" exponent="0.5">
+            <location x="-1" y="5" z="-1" w="1.0" />
+            <target x="-1" y="0" z="0" />
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+            <attenuation constant="0.0" linear="1.0" quadratic="0.0" />
+        </spot>
+    </lights>
+
+    <textures>
+        <texture id="tex_asphalt" file="scenes/images/asphalt.jpg" />
+        <texture id="tex_brick" file="scenes/images/brick.jpg" />
+        <texture id="tex_concrete" file="scenes/images/concrete.jpg" />
+        <texture id="tex_flag" file="scenes/images/portugal.png"/>
+        <texture id="tex_metal" file="scenes/images/metal.jpg" />
+        <texture id="tex_donut" file="scenes/images/donut.jpg" />
+        <texture id="tex_football" file="scenes/images/football.jpg" />
+    </textures>
+
+    <materials>
+        <material id="default_material" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.8" g="0.8" b="0.8" a="1.0" />
+            <diffuse r="0.6" g="0.6" b="0.6" a="1.0" />
+            <specular r="0.0" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="green" shininess="100">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.1" g="0.2" b="0.1" a="1.0" />
+            <diffuse r="0.258" g="0.388" b="0.211" a="1.0" />
+            <specular r="0.7" g="0.8" b="0.7" a="1.0" />
+        </material>
+        <material id="light_green" shininess="10">
+            <emission r="0.1" g="0.1" b="0.1" a="1.0" />
+            <ambient r="0.588" g="0.858" b="0.490" a="1.0" />
+            <diffuse r="0.588" g="0.858" b="0.490" a="1.0" />
+            <specular r="0.588" g="0.858" b="0.490" a="1.0" />
+        </material>
+        <material id="headlight_yellow" shininess="10">
+            <emission r="0.949" g="0.878" b="0.600" a="1.0" />
+            <ambient r="0.949" g="0.878" b="0.600" a="1.0" />
+            <diffuse r="0.949" g="0.878" b="0.600" a="0.2" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+        <material id="red" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.4" g="0.0" b="0.0" a="1.0" />
+            <diffuse r="0.6" g="0.0" b="0.0" a="1.0" />
+            <specular r="0.6" g="0.0" b="0.0" a="1.0" />
+        </material>
+        <material id="white" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="1.0" g="1.0" b="1.0" a="1.0" />
+            <diffuse r="1.0" g="1.0" b="1.0" a="1.0" />
+            <specular r="1.0" g="1.0" b="1.0" a="1.0" />
+        </material>
+        <material id="dark_gray" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.2" g="0.2" b="0.2" a="1.0" />
+            <diffuse r="0.2" g="0.2" b="0.2" a="1.0" />
+            <specular r="0" g="0" b="0" a="1.0" />
+        </material>
+        <material id="medium_gray" shininess="10">
+            <emission r="0.0" g="0.0" b="0.0" a="1.0" />
+            <ambient r="0.4" g="0.4" b="0.4" a="1.0" />
+            <diffuse r="0.4" g="0.4" b="0.4" a="1.0" />
+            <specular r="0.4" g="0.4" b="0.4" a="1.0" />
+        </material>
+    </materials>
+
+    <transformations>
+        <!-- Reusable transformations -->
+        <transformation id="tr_rotateX90">
+            <rotate axis="x" angle="90"/>
+        </transformation>
+        <transformation id="tr_rotateY90">
+            <rotate axis="y" angle="90"/>
+        </transformation>
+        <transformation id="tr_rotateY180">
+            <rotate axis="y" angle="180"/>
+        </transformation>
+        <transformation id="tr_rotateZ180">
+            <rotate axis="z" angle="180"/>
+        </transformation>
+
+        <!-- Unique transformations -->
+        <transformation id="tr_street_building0">
+            <translate x="-10" y="15" z="5"/>
+            <scale x="10" y="30" z="10"/>
+        </transformation>
+        <transformation id="tr_street_building1_body">
+            <scale x="10" y="15" z="8"/>
+        </transformation>
+        <transformation id="tr_street_ground_floor">
+            <scale x="30" y="0.5" z="30" />
+        </transformation>
+        <transformation id="tr_street_road">
+            <translate x="0" y="0.3" z="0"/>
+        </transformation>
+        <transformation id="tr_street_road_floor">
+            <scale x="6" y="0.1" z="30"/> 
+        </transformation>
+        <transformation id="tr_street_road_line">
+            <translate x="0" y="0.01" z="0"/>
+            <scale x=".15" y="0.1" z="30"/>
+        </transformation>
+        <transformation id="tr_street_ground_walkway_left">
+            <translate x="-3.8" y="0.4" z="0"/>
+            <scale x="1.6" y="0.3" z="30"/>
+        </transformation>
+        <transformation id="tr_street_ground_walkway_right">
+            <translate x="3.9" y="0.4" z="0"/>
+            <scale x="1.8" y="0.3" z="30"/>
+        </transformation>
+        <transformation id="tr_street_ground_sign">
+            <translate x="3.5" y="3" z="-14"/>
+        </transformation>
+        <transformation id="tr_street_ground_sign_top_inner">
+            <translate x="0" y="0.025" z="0.001"/>
+            <scale x="0.8" y="0.8" z="1"/>
+        </transformation>
+        <transformation id="tr_street_ground_sign_cylinder">
+            <translate x="0" y="-3" z="-0.05"/>    
+            <rotate axis="x" angle="-90"/>
+            <scale x="0.05" y="0.05" z="3.5"/>
+        </transformation>
+        <transformation id="tr_car">
+            <translate x="-1.5" y="1.18" z="-2.5"/>
+        </transformation>
+        <transformation id="tr_car_front_window">
+            <translate x="-0.8" y="0.3" z="0.9" />
+            <scale x="1.6" y="1.0" z="1"/>
+            <rotate axis="x" angle="-21.5"/>
+        </transformation>
+        <transformation id="tr_car_back_window">
+            <translate x="0" y="0.8" z="-1.45" />
+            <scale x="1.6" y="0.8" z="1"/>
+            <rotate axis="x" angle="12.5"/>
+            <rotate axis="y" angle="180"/>
+            <translate x="-0.5" y="-0.5" z="0"/>
+        </transformation>
+        <transformation id="tr_flipX">
+            <scale x="-1" y="1" z="1"/>
+        </transformation>
+        <transformation id="tr_car_lateral_left">
+            <scale x="1" y="0.8" z="1"/>
+            <translate x="0.9" y="0.9" z="0"/>
+        </transformation>
+        <transformation id="tr_car_lateral_right">
+            <scale x="1" y="0.8" z="1"/>
+            <translate x="-0.795" y="0.9" z="0"/>
+        </transformation>
+        <transformation id="tr_car_lateral_window">
+            <translate x="-0.05" y="-0.45" z="0.7"/>
+            <rotate axis="y" angle="90" />
+        </transformation>
+        <transformation id="tr_car_front_headlights">
+            <translate x="0" y="0.15" z="1.9"/>
+        </transformation>
+        <transformation id="tr_car_front_headlight_left">
+            <scale x="0.2" y="0.2" z="0.1"/>
+            <translate x="3.0" y="0" z="0"/>
+        </transformation>
+        <transformation id="tr_car_lateral_windows_right">
+            <translate x="-0.1" y="0" z="-0.79"/>
+            <scale x="1" y="1" z="1.03"/>
+            <rotate axis="y" angle="180"/>
+        </transformation>
+        <transformation id="tr_car_lateral_pillar_front">
+            <translate x="-0.051" y="0.1" z="0.68" />
+            <rotate axis="x" angle="-18" />
+            <scale x="0.1" y="1.15" z="0.1" />
+        </transformation>
+        <transformation id="tr_car_lateral_pillar_center">
+            <translate x="-0.051" y="0.1" z="-0.5" />
+            <scale x="0.1" y="1" z="0.2" />
+        </transformation>
+        <transformation id="tr_car_lateral_pillar_back">
+            <translate x="-0.051" y="0.1" z="-1.435" />
+            <rotate axis="x" angle="13" />
+            <scale x="0.1" y="1.15" z="0.1" />
+        </transformation>
+        <transformation id="tr_car_bottom_body">
+            <scale x="1.8" y="0.9" z="3.8"/>
+        </transformation>
+        <transformation id="tr_car_bottom_wheels">
+            <translate x="0" y="-0.4" z="-1.2"/>
+        </transformation>
+        <transformation id="tr_forward_wheel_set">
+            <translate x="0" y="0" z="2.1"/>
+        </transformation>
+        <transformation id="tr_wheel">
+            <translate x="0.6" y="0" z="0"/>
+        </transformation>
+        <transformation id="tr_wheel_tire">
+            <scale x="0.35" y="0.45" z="0.45"/>
+            <rotate axis="y" angle="90"/>
+        </transformation>
+        <transformation id="tr_wheel_rims">
+            <translate x="0.35" y="0" z="0"/>
+            <scale x="0.05" y="0.45" z="0.45"/>
+            <rotate axis="y" angle="90"/>
+        </transformation>
+        <transformation id="tr_wheel_inner_base">
+            <translate x="0" y="0" z="0"/>
+            <scale x="0.01" y="0.45" z="0.45"/>
+            <rotate axis="y" angle="-90"/>
+        </transformation>
+        <transformation id="tr_p_face_zp">
+            <translate x="-0.5" z="0.5" y="-0.5"/>
+        </transformation>
+        <transformation id="tr_p_upside_down_triangle">
+            <rotate axis="z" angle="180"/>
+            <translate x="-0.5" y="-0.433" z="0"/>
+        </transformation>
+        <transformation id="tr_street_building0_helipad_circle">
+            <translate x="-10" y="30.0" z="5"/>
+            <scale x="8.0" y="8" z="8.0"/>
+            <rotate axis="x" angle="90"/>
+        </transformation>
+    </transformations>
+
+    <primitives>
+        <primitive id="rectangle">
+            <rectangle x1="0" y1="0" x2="1" y2="1" />
+        </primitive>
+        <primitive id="triangle">
+            <triangle x1="0" y1="0" z1="0" x2="1" y2="0" z2="0" x3="0.5" y3="0.866" z3="0"/>
+        </primitive>
+        <primitive id="cylinder">
+            <cylinder base="1.0" top="1.0" height="1.0" slices="16" stacks="16" />
+        </primitive>
+        <primitive id="cone">
+            <cylinder base="1.0" top="0.0" height="1.0" slices="16" stacks="16" />
+        </primitive>
+        <primitive id="sphere">
+            <sphere radius="1.0" slices="16" stacks="16" />
+        </primitive>
+        <primitive id="torus">
+            <torus inner="0.05" outer="0.5" slices="8" loops="64"/>
+        </primitive>
+        <primitive id="donut">
+            <torus inner="0.4" outer="1.0" slices="16" loops="64"/>
+        </primitive>
+        <primitive id="car_lateral_window_primitive1">
+            <triangle x1="-0.1" y1="0" z1="0" x2="2.225" y2="0" z2="0" x3="0.25537" y3="1.09371" z3="0"/>
+        </primitive>
+        <primitive id="car_lateral_window_primitive2">  
+            <triangle x1="2.225" y1="0" z1="0" x2="1.95631" y2="1.10053" z2="0" x3="0.25537" y3="1.09371" z3="0"/>
+        </primitive>
+        <primitive id="flag_triangle">
+            <triangle x1="0" y1="0" z1="0" x2="1.2" y2="0.0" z2="0" x3="0" y3="0.5" z3="0"/>
+        </primitive>
+        <primitive id="flag_triangle1">
+            <triangle x1="0" y1="0" z1="0" x3="1.2" y3="0.0" z3="0" x2="0" y2="0.5" z2="0"/>
+        </primitive>
+    </primitives>
+
+    <components>
+        <component id="root">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="default_material" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="street" />
+            </children>
+        </component>
+
+        <component id="street">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="default_material" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="street_building0" />
+                <componentref id="street_building1" />
+                <componentref id="street_ground" />
+                <componentref id="car" />
+            </children>
+        </component>
+
+        <component id="street_building0">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_brick"  length_s="1.0" length_t="1.0"/>
+            <children>
+                <componentref id="street_building0_body"/>
+                <componentref id="street_building0_helipad"/>
+            </children>
+        </component>
+
+        <component id="street_building0_body">
+            <transformation>
+                <transformationref id="tr_street_building0" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_base"/>
+            </children>
+        </component>
+
+        <component id="street_building0_helipad">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="dark_gray" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="street_building0_helipad_circle"/>
+            </children>
+        </component>
+
+        <component id="street_building0_helipad_circle">
+            <transformation>
+                <transformationref id="tr_street_building0_helipad_circle"/>
+            </transformation>
+            <materials>
+                <material id="dark_gray" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="torus"/>
+            </children>
+        </component>
+        
+        <component id="street_building1">
+            <transformation>
+                <translate x="-10" y="7.6" z="-7"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_brick" length_s="1.0" length_t="1.8"/>
+            <children>
+                <componentref id="street_building1_body"/>
+                <componentref id="street_building1_donut"/>
+            </children>
+        </component>
+
+        <component id="street_building1_body">
+            <transformation>
+                <transformationref id="tr_street_building1_body" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_base"/>
+            </children>
+        </component>
+
+        <component id="street_building1_donut">
+            <transformation>
+                <translate x="0" y="11.5" z="0"/>
+                <scale x="3" y="3" z="3"/>
+                <rotate axis="y" angle="90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_donut" length_t="1.0" length_s="1.0"/>
+            <children>
+                <primitiveref id="donut"/>
+            </children>
+        </component>
+
+        <component id="street_ground">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="street_ground_floor"/>
+                <componentref id="street_ground_sign"/>
+                <componentref id="street_road"/>
+                <componentref id="street_ground_walkway_left"/>
+                <componentref id="street_ground_walkway_right"/>
+                <componentref id="street_ground_football"/>
+            </children>
+        </component>
+
+        <component id="street_ground_football">
+            <transformation>
+                <translate x="10" y="0.5" z="-3"/>
+                <scale x="0.2" y="0.2" z="0.2"/>
+                <rotate axis="z" angle="180"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_football" length_t="1.0" length_s="1.0"/>
+            <children>
+                <primitiveref id="sphere"/>
+            </children>
+        </component>
+
+        <component id="street_ground_floor">
+            <transformation>
+                <transformationref id="tr_street_ground_floor" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube" />
+            </children>
+        </component>
+
+        <component id="street_road">
+            <transformation>
+                <transformationref id="tr_street_road" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="street_road_floor"/>
+                <componentref id="street_road_line"/>
+            </children>
+        </component>
+
+        <component id="street_road_floor">
+            <transformation>
+                <transformationref id="tr_street_road_floor" />
+            </transformation>
+            <materials>
+                <material id="medium_gray" />
+            </materials>
+            <texture id="tex_asphalt" length_s="1.0" length_t="1.0"/>
+            <children>
+                <componentref id="p_cube_without_base"/>
+            </children>
+        </component>
+
+        <component id="street_road_line">
+            <transformation>
+                <transformationref id="tr_street_road_line" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_base"/>
+            </children>
+        </component>
+
+
+        <component id="street_ground_walkway_left">
+            <transformation>
+                <transformationref id="tr_street_ground_walkway_left" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="tex_concrete" length_s="1.0" length_t="0.1"/>
+            <children>
+                <componentref id="p_cube_without_base"/>
+            </children>
+        </component>
+
+        <component id="street_ground_walkway_right">
+            <transformation>
+                <transformationref id="tr_street_ground_walkway_right" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="tex_concrete" length_s="1.0" length_t="0.1"/>
+            <children>
+                <componentref id="p_cube_without_base"/>
+            </children>
+        </component>
+
+        <component id="street_ground_sign">
+            <transformation>
+                <transformationref id="tr_street_ground_sign" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="street_ground_sign_top_outer"/>
+                <componentref id="street_ground_sign_top_outer_flipped"/>
+                <componentref id="street_ground_sign_top_inner"/>
+                <componentref id="street_ground_sign_cylinder"/>
+            </children>
+        </component>
+
+        <component id="street_ground_sign_top_outer_flipped">
+            <transformation>
+                <transformationref id="tr_rotateY180" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="street_ground_sign_top_outer"/>
+            </children>
+        </component>
+
+        <component id="street_ground_sign_top_outer">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="red" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_upside_down_triangle"/>
+            </children>
+        </component>
+
+        <component id="street_ground_sign_top_inner">
+            <transformation>
+                <transformationref id="tr_street_ground_sign_top_inner" />
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_upside_down_triangle"/>
+            </children>
+        </component>
+
+        <component id="street_ground_sign_cylinder">
+            <transformation>
+                <transformationref id="tr_street_ground_sign_cylinder" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_metal" length_t="1.0" length_s="1.0"/>
+            <children>
+                <primitiveref id="cylinder"/>
+            </children>
+        </component>
+
+        <!-- Car components -->
+        <component id="car">
+            <transformation>
+                <translate x="-1.5" y="1.18" z="-2.5"/>
+            </transformation>
+            <materials>
+                <material id="green" />
+                <material id="red" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_front"/>
+                <componentref id="car_top" />
+                <componentref id="car_back" />
+                <componentref id="car_laterals"/>
+                <componentref id="car_bottom"/>
+            </children>
+        </component>
+
+        <component id="car_front">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_front_window"/>
+                <componentref id="car_front_headlights"/>
+            </children>
+        </component>
+
+        <component id="car_front_headlights">
+            <transformation>
+                <transformationref id="tr_car_front_headlights"/>
+            </transformation>
+            <materials>
+                <material id="headlight_yellow" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_front_headlight_left"/>
+                <componentref id="car_front_headlight_right"/>
+            </children>
+        </component>
+
+        <component id="car_front_headlight_right">
+            <transformation>
+                <transformationref id="tr_rotateY180"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_front_headlight_left"/>
+            </children>
+        </component>
+
+        <component id="car_front_headlight_left">
+            <transformation>
+                <transformationref id="tr_car_front_headlight_left"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="sphere"/>
+            </children>
+        </component>
+
+        <component id="car_front_window">
+            <transformation>
+                <transformationref id="tr_car_front_window"/>
+            </transformation>
+            <materials>
+                <material id="light_green" />
+                <material id="white"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="car_back">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_back_window"/>
+            </children>
+        </component>
+
+        <component id="car_back_window">
+            <transformation>
+                <transformationref id="tr_car_back_window"/>
+            </transformation>
+            <materials>
+                <material id="light_green" />
+                <material id="white"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="car_top">
+            <transformation>
+                <translate x="0" y="1.2" z="-0.4"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_top_roof" />
+                <componentref id="car_top_flag" />
+            </children>
+        </component>
+
+        <component id="car_top_flag">
+            <transformation>
+                <translate x="0" y="0.2" z="0"/>
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_top_flag_triangle" />
+                <componentref id="car_top_flag_pole" />
+            </children>
+        </component>
+
+        <component id="car_top_flag_pole">
+            <transformation>
+                <translate x="0" y="0.8" z="0"/>
+                <scale x="0.05" y="1.2" z="0.05"/>
+                <rotate axis="x" angle="90"/>
+            </transformation>
+            <materials>
+                <material id="white" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="cylinder"/>
+            </children>
+        </component>
+
+        <component id="car_top_flag_triangle">
+            <transformation>
+                <translate x="0" y="0.3" z="0"/>
+                <rotate axis="y" angle="90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="tex_flag" length_t="0.4" length_s="0.8"/>
+            <children>
+                <componentref id="car_top_flag_triangle0"/>
+                <componentref id="car_top_flag_triangle1"/>
+            </children>
+        </component>
+
+        <component id="car_top_flag_triangle1">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="red" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <primitiveref id="flag_triangle1"/>
+            </children>
+        </component>
+
+        <component id="car_top_flag_triangle0">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="flag_triangle"/>
+            </children>
+        </component>
+
+        <component id="car_top_roof">
+            <transformation>
+                <scale x="1.8" y="0.1" z="1.9"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube" />
+            </children>
+        </component>
+
+        <component id="car_laterals">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_lateral_left" />
+                <componentref id="car_lateral_right" />
+            </children>
+        </component>
+        
+        <component id="car_lateral_right">
+            <transformation>
+                <transformationref id="tr_car_lateral_right"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_lateral_pillars" />
+                <componentref id="car_lateral_windows_right" />
+            </children>
+        </component>
+
+        <component id="car_lateral_left">
+            <transformation>
+                <transformationref id="tr_car_lateral_left"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_lateral_pillars" />
+                <componentref id="car_lateral_windows_left" />
+            </children>
+        </component>
+        
+        <component id="car_lateral_windows_left">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="light_green" />
+                <material id="white"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_lateral_window_left" />
+            </children>
+        </component>
+
+        <component id="car_lateral_windows_right">
+            <transformation>
+                <transformationref id="tr_car_lateral_windows_right"/>
+            </transformation>
+            <materials>
+                <material id="light_green" />
+                <material id="white"/>
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_lateral_windows_left" />
+            </children>
+        </component>
+
+        <component id="car_lateral_window_left">
+            <transformation>
+                <transformationref id="tr_car_lateral_window"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="car_lateral_window_primitive1"/>
+                <primitiveref id="car_lateral_window_primitive2"/>
+            </children>
+        </component>
+
+        <component id="car_lateral_pillars">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_lateral_pillar_front" />
+                <componentref id="car_lateral_pillar_center" />
+                <componentref id="car_lateral_pillar_back" />
+            </children>
+        </component>
+
+        <component id="car_lateral_pillar_front">
+            <transformation>
+                <transformationref id="tr_car_lateral_pillar_front"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_bases" />
+            </children>
+        </component>
+
+        <component id="car_lateral_pillar_center">
+            <transformation>
+                <transformationref id="tr_car_lateral_pillar_center"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_bases" />
+            </children>
+        </component>
+
+        <component id="car_lateral_pillar_back">
+            <transformation>
+                <transformationref id="tr_car_lateral_pillar_back"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_bases" />
+            </children>
+        </component>
+
+        <component id="car_bottom">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="car_bottom_body"/>
+                <componentref id="car_bottom_wheels"/>
+            </children>
+        </component>
+
+        <component id="car_bottom_body">
+            <transformation>
+                <transformationref id="tr_car_bottom_body"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube"/>
+            </children>
+        </component>
+
+        <component id="car_bottom_wheels">
+            <transformation>
+                <transformationref id="tr_car_bottom_wheels"/>
+            </transformation>
+            <materials>
+                <material id="medium_gray" />
+            </materials>
+            <texture id="none"/>
+            <children>
+                <componentref id="wheel_set"/>
+                <componentref id="forward_wheel_set"/>
+            </children>
+        </component>
+
+        <component id="forward_wheel_set">
+            <transformation>
+                <transformationref id="tr_forward_wheel_set"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="wheel_set"/>
+            </children>
+        </component>
+
+        <component id="wheel_set">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="wheel"/>
+                <componentref id="wheel_flipped"/>
+            </children>
+        </component>
+
+        <component id="wheel_flipped">
+            <transformation>
+                <transformationref id="tr_rotateY180"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="wheel"/>
+            </children>
+        </component>
+
+        <component id="wheel">
+            <transformation>
+                <transformationref id="tr_wheel"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="wheel_tire"/>
+                <componentref id="wheel_rims"/>
+                <componentref id="wheel_inner_base"/>
+            </children>
+        </component>
+
+        <component id="wheel_tire">
+            <transformation>
+                <transformationref id="tr_wheel_tire"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="cylinder"/>
+            </children>
+        </component>
+
+        <component id="wheel_rims">
+            <transformation>
+                <transformationref id="tr_wheel_rims"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="cone"/>
+            </children>
+        </component>
+
+        <component id="wheel_inner_base">
+            <transformation>
+                <transformationref id="tr_wheel_inner_base"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="cone"/>
+            </children>
+        </component>
+
+        <!-- Primitive Components -->
+        <component id="p_cube">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_two_faces_along_y"/>
+                <componentref id="p_cube_without_bases"/>
+            </children>
+        </component>
+
+        <component id="p_cube_without_top">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_bases"/>
+                <componentref id="p_face_y-"/>
+            </children>
+        </component>
+
+        <component id="p_cube_without_base">
+            <transformation>
+                <transformationref id="tr_rotateZ180"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_cube_without_top"/>
+            </children>
+        </component>
+
+        <component id="p_cube_without_bases">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_two_faces_along_z"/>
+                <componentref id="p_two_faces_along_x"/>
+            </children>
+        </component>
+
+        <component id="p_two_faces_along_y">
+            <transformation>
+                <transformationref id="tr_rotateX90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_two_faces_along_z" />
+            </children>
+        </component>
+
+        <component id="p_two_faces_along_x">
+            <transformation>
+                <transformationref id="tr_rotateY90" />
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_two_faces_along_z" />
+            </children>
+        </component>
+
+        <component id="p_two_faces_along_z">
+            <transformation>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_face_zp"/>
+                <componentref id="p_face_zn"/>
+            </children>
+        </component>
+
+        <component id="p_face_y-">
+            <transformation>
+                <transformationref id="tr_rotateX90"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_face_zp"/>
+            </children>
+        </component>
+
+        <component id="p_face_zp">
+            <transformation>
+                <transformationref id="tr_p_face_zp"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="rectangle"/>
+            </children>
+        </component>
+
+        <component id="p_face_zn">
+            <transformation>
+                <transformationref id="tr_rotateY180"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <componentref id="p_face_zp"/>
+            </children>
+        </component>
+
+        <component id="p_upside_down_triangle">
+            <transformation>
+                <transformationref id="tr_p_upside_down_triangle"/>
+            </transformation>
+            <materials>
+                <material id="inherit" />
+            </materials>
+            <texture id="inherit"/>
+            <children>
+                <primitiveref id="triangle"/>
+            </children>
+        </component>
+    </components>
+</sxs>
